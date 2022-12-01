@@ -22,6 +22,8 @@ interval = 15
 # input provider settings; optional: local / http
 providers = ["local"]
 
+disable_usage_report = true
+
 # [global.labels]
 # region = "shanghai"
 # env = "localhost"
@@ -54,6 +56,15 @@ enable = false
 address = ":9100"
 print_access = false
 run_mode = "release"
+
+[ibex]
+  enable = true
+  ## ibex flush interval
+  interval = "1000ms"
+  ## n9e ibex server rpc address
+  Servers = ["127.0.0.1:20090"]
+  ## temp script dir
+  metaDir = "./meta"
 
 [http_provider]
 # HttpRemoteProvider插件，通过Http请求的方式获取Categraf的配置

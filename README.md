@@ -1,7 +1,7 @@
 ## Categraf 修改测试
 
 <a href="https://github.com/flashcatcloud/categraf">
-  <img src="doc/categraf.png" alt="categraf, one-stop telemetry collector" width="80" />
+  <img src="https://cdn.jsdelivr.net/gh/flashcatcloud/categraf@main/doc/categraf.png" alt="categraf, one-stop telemetry collector" width="80" />
 </a>
 
 [![Powered By Flashcat](https://img.shields.io/badge/Powered%20By-Flashcat-blueviolet)](https://flashcat.cloud/)
@@ -78,7 +78,7 @@ see detail [here](https://github.com/flashcatcloud/categraf/blob/main/prometheus
 
 ## Plugin
 
-plugin list: [https://github.com/flashcatcloud/categraf/tree/main/inputs](https://github.com/flashcatcloud/categraf/tree/main/inputs)
+plugin list and document: [https://github.com/flashcatcloud/categraf/tree/main/inputs](https://github.com/flashcatcloud/categraf/tree/main/inputs) 
 
 
 ## Thanks
@@ -87,4 +87,4 @@ Categraf is developed on the basis of Telegraf, Exporters and the OpenTelemetry.
 
 ## Community
 
-![](doc/laqun.jpeg)
+<img src="https://cdn.jsdelivr.net/gh/flashcatcloud/categraf@main/doc/laqun.jpeg" alt="categraf contact" width="240" />

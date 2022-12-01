@@ -2,7 +2,6 @@ package agent
 
 import (
 	"log"
-	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -15,8 +14,6 @@ import (
 	"flashcat.cloud/categraf/writer"
 )
 
-var metricReplacer = strings.NewReplacer("-", "_", ".", "_", " ", "_", "'", "_", "\"", "_")
-
 type InputReader struct {
 	inputName  string
 	input      inputs.Input
@@ -25,13 +22,7 @@ type InputReader struct {
 	waitGroup  sync.WaitGroup
 }
 
-func (a *Agent) StartInputReader(name string, in inputs.Input) {
-	reader := NewInputReader(name, in)
-	go reader.startInput()
-	a.InputReaders[name] = reader
-}
-
-func NewInputReader(inputName string, in inputs.Input) *InputReader {
+func newInputReader(inputName string, in inputs.Input) *InputReader {
 	return &InputReader{
 		inputName: inputName,
 		input:     in,
