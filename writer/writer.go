@@ -9,11 +9,12 @@ import (
 	"net/http"
 	"time"
 
-	"flashcat.cloud/categraf/config"
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/snappy"
 	"github.com/prometheus/client_golang/api"
 	"github.com/prometheus/prometheus/prompb"
+
+	"flashcat.cloud/categraf/config"
 )
 
 type Writer struct {
@@ -21,8 +22,8 @@ type Writer struct {
 	Client api.Client
 }
 
-// newWrite creates a new Writer from config.WriterOption
-func newWrite(opt config.WriterOption) (Writer, error) {
+// newWriter creates a new Writer from config.WriterOption
+func newWriter(opt config.WriterOption) (Writer, error) {
 	cli, err := api.NewClient(api.Config{
 		Address: opt.Url,
 		RoundTripper: &http.Transport{
