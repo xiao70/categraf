@@ -26,7 +26,6 @@ require (
 	github.com/jackc/pgx/v4 v4.17.2
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/json-iterator/go v1.1.12
-	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
 	github.com/koding/multiconfig v0.0.0-20171124222453-69c27309b2d7
 	github.com/krallistic/kazoo-go v0.0.0-20170526135507-a15279744f4e
 	github.com/mattn/go-isatty v0.0.14
@@ -75,6 +74,7 @@ require (
 )
 
 require (
+	github.com/godbus/dbus/v5 v5.0.4 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.13.0 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
@@ -84,7 +84,10 @@ require (
 	github.com/jackc/pgtype v1.12.0 // indirect
 )
 
-require github.com/vmware/govmomi v0.29.0
+require (
+	github.com/coreos/go-systemd/v22 v22.3.2
+	github.com/vmware/govmomi v0.29.0
+)
 
 replace gopkg.in/yaml.v2 => github.com/rfratto/go-yaml v0.0.0-20211119180816-77389c3526dc
 
