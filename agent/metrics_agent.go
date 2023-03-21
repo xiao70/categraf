@@ -11,7 +11,9 @@ import (
 	"flashcat.cloud/categraf/types"
 
 	// auto registry
+	_ "flashcat.cloud/categraf/inputs/aliyun"
 	_ "flashcat.cloud/categraf/inputs/arp_packet"
+	_ "flashcat.cloud/categraf/inputs/cloudwatch"
 	_ "flashcat.cloud/categraf/inputs/conntrack"
 	_ "flashcat.cloud/categraf/inputs/cpu"
 	_ "flashcat.cloud/categraf/inputs/disk"
@@ -58,6 +60,7 @@ import (
 	_ "flashcat.cloud/categraf/inputs/redis_sentinel"
 	_ "flashcat.cloud/categraf/inputs/rocketmq_offset"
 	_ "flashcat.cloud/categraf/inputs/snmp"
+	_ "flashcat.cloud/categraf/inputs/sockstat"
 	_ "flashcat.cloud/categraf/inputs/sqlserver"
 	_ "flashcat.cloud/categraf/inputs/switch_legacy"
 	_ "flashcat.cloud/categraf/inputs/system"
@@ -192,6 +195,9 @@ func (ma *MetricsAgent) RegisterInput(name string, configs []cfg.ConfigWithForma
 		}
 
 		if empty {
+			if config.Config.DebugMode {
+				log.Printf("W! no instances for input:%s", inputKey)
+			}
 			return
 		}
 	}

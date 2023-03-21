@@ -32,6 +32,7 @@ const (
 	AnnotationRuleKey      = "categraf/logs.stdout.processing_rules"
 	AnnotationTopicKey     = "categraf/logs.stdout.topic"
 	AnnotationTagPrefixKey = "categraf/tags.prefix"
+	AnnotationCollectKey   = "categraf/logs.stdout.collect"
 )
 
 var (
@@ -254,6 +255,11 @@ func (l *Launcher) getSource(pod *kubelet.Pod, container kubelet.ContainerStatus
 		if !l.collectAll {
 			return nil, errCollectAllDisabled
 		}
+		if !(pod.Metadata.Annotations[AnnotationCollectKey] == "" ||
+			pod.Metadata.Annotations[AnnotationCollectKey] == "true") {
+			log.Printf("pod %s disable stdout collecting", pod.Metadata.Name)
+			return nil, errCollectAllDisabled
+		}
 		// The logs source is the short image name
 		logsSource := ""
 		shortImageName, err := l.getShortImageName(pod, container.Name)
@@ -312,7 +318,6 @@ func buildTags(pod *kubelet.Pod, container kubelet.ContainerStatus) []string {
 		fmt.Sprintf("kubernetes.namespace_name=%s", pod.Metadata.Namespace),
 		fmt.Sprintf("kubernetes.pod_id=%s", pod.Metadata.UID),
 		fmt.Sprintf("kubernetes.pod_name=%s", pod.Metadata.Name),
-		fmt.Sprintf("kubernetes.host=%s", pod.Spec.NodeName),
 		fmt.Sprintf("kubernetes.host=%s", pod.Spec.NodeName),
 		fmt.Sprintf("kubernetes.container_id=%s", container.ID),
 		fmt.Sprintf("kubernetes.container_name=%s", container.Name),
